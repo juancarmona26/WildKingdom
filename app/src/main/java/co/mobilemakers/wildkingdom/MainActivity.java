@@ -1,17 +1,30 @@
 package co.mobilemakers.wildkingdom;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements OptionsFragment.OnFragmentInteractionListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        startOptionsFrament();
+
+
+    }
+
+    private void startOptionsFrament() {
+        OptionsFragment optionsFragment = new OptionsFragment();
+
+        FragmentTransaction framentTransaction = getFragmentManager().beginTransaction();
+        framentTransaction.add(R.id.fragment_container,optionsFragment);
+        framentTransaction.commit();
     }
 
 
@@ -35,5 +48,35 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onButtonBrownBearClicked() {
+
+    }
+
+    @Override
+    public void onButtonGrizzlyBear() {
+
+    }
+
+    @Override
+    public void onButtonWombat() {
+
+    }
+
+    @Override
+    public void onButtonGecko() {
+
+    }
+
+    @Override
+    public void onButtonCoralSnake() {
+
+    }
+
+    @Override
+    public void onButtonTortoise() {
+
     }
 }
