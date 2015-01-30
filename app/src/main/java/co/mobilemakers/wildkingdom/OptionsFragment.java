@@ -3,6 +3,7 @@ package co.mobilemakers.wildkingdom;
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.Button;
 
 public class OptionsFragment extends Fragment {
 
+    public static final String LOG_TAG = OptionsFragment.class.getName();
     private Button buttonBrownBear;
     private Button buttonGrizzlyBear;
     private Button buttonWombat;
@@ -18,13 +20,7 @@ public class OptionsFragment extends Fragment {
     private Button buttonTortoise;
 
     public interface OnFragmentInteractionListener {
-        public void onButtonBrownBearClicked();
-        public void onButtonGrizzlyBear();
-        public void onButtonWombat();
-        public void onButtonGecko();
-        public void onButtonCoralSnake();
-        public void onButtonTortoise();
-
+        public void onClickButtonEvent(int animalPosition);
     }
 
 
@@ -48,7 +44,6 @@ public class OptionsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_options, container, false);
         prepareViews(rootView);
-
         setButtonEvents();
 
         return rootView;
@@ -56,11 +51,11 @@ public class OptionsFragment extends Fragment {
 
     private void prepareViews(View rootView) {
         buttonBrownBear = (Button) rootView.findViewById(R.id.button_brown_bear);
-        buttonGrizzlyBear = (Button) rootView.findViewById(R.id.button_brown_bear);
-        buttonWombat = (Button) rootView.findViewById(R.id.button_brown_bear);
-        buttonGecko = (Button) rootView.findViewById(R.id.button_brown_bear);
-        buttonCoralSnake = (Button) rootView.findViewById(R.id.button_brown_bear);
-        buttonTortoise = (Button) rootView.findViewById(R.id.button_brown_bear);
+        buttonGrizzlyBear = (Button) rootView.findViewById(R.id.button_grizzly_bear);
+        buttonWombat = (Button) rootView.findViewById(R.id.button_wombat);
+        buttonGecko = (Button) rootView.findViewById(R.id.button_gecko);
+        buttonCoralSnake = (Button) rootView.findViewById(R.id.button_coral_snake);
+        buttonTortoise = (Button) rootView.findViewById(R.id.button_tortoise);
     }
 
 
@@ -76,30 +71,31 @@ public class OptionsFragment extends Fragment {
     private View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            Log.d(LOG_TAG,"Entra onclick");
             switch(v.getId()){
 
                 case R.id.button_brown_bear:
-                    mListener.onButtonBrownBearClicked();
+                    mListener.onClickButtonEvent(0);
                 break;
 
                 case R.id.button_grizzly_bear:
-                    mListener.onButtonGrizzlyBear();
-                break;
-
-                case R.id.button_gecko:
-                    mListener.onButtonGecko();
+                    mListener.onClickButtonEvent(1);
                 break;
 
                 case R.id.button_wombat:
-                    mListener.onButtonWombat();
+                    mListener.onClickButtonEvent(2);
+                    break;
+
+                case R.id.button_gecko:
+                    mListener.onClickButtonEvent(3);
                 break;
 
                 case R.id.button_coral_snake:
-                    mListener.onButtonCoralSnake();
+                    mListener.onClickButtonEvent(4);
                 break;
 
                 case R.id.button_tortoise:
-                    mListener.onButtonTortoise();
+                    mListener.onClickButtonEvent(5);;
                 break;
             }
         }

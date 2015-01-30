@@ -13,5 +13,9 @@
     <string name="button_coral_snake">Coral Snake</string>
     <string name="button_tortoise">Tortoise</string>
     <string name="text_view_select">Choose an option</string>
+    <string name="text_view_habitad">HABITAT:</string>
+    <string name="text_view_description">DESCRIPTION:</string>
+    <string name="text_view_minus_minus">------------------------------------------</string>
+    <string name="button_next_animal">Next animal</string>
 
 </resources>
